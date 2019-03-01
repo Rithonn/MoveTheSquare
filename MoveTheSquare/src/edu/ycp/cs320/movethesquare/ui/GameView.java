@@ -17,6 +17,7 @@ import edu.ycp.cs320.movethesquare.model.Game;
 import edu.ycp.cs320.movethesquare.model.Square;
 
 public class GameView extends JPanel {
+	//Can change colors here with RGB values
 	private static final Color MIDNIGHT_BLUE = new Color(25, 25, 112);
 	
 	private Game model;
@@ -26,11 +27,16 @@ public class GameView extends JPanel {
 	public GameView(Game model) {
 		this.model = model;
 		setPreferredSize(new Dimension((int) model.getWidth(), (int)model.getHeight()));
-		setBackground(MIDNIGHT_BLUE);
+		
+		//Change the color of the background here
+		//Set to black for testing purposes
+		setBackground(Color.BLACK);
 
 		// djh2-KEC119-21: changed from 30 to 45
 		// djh2-YCPlaptop: change from 45 to 100
-		this.timer = new Timer(1000 / 100, new ActionListener() {
+		
+		//Changed the timer to be 30 again
+		this.timer = new Timer(30 / 100, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -55,7 +61,7 @@ public class GameView extends JPanel {
 		Point mouseLoc = getMousePosition();
 		if (mouseLoc != null) {
 			controller.computeSquareMoveDirection(model, square, mouseLoc.getX(), mouseLoc.getY());
-		}
+		}	
 		controller.moveSquare(model, square);
 		repaint();
 	}
@@ -66,7 +72,8 @@ public class GameView extends JPanel {
 		
 		// djh2-KEC110-21: changed from GREEN to RED
 		// djh2-YCPlaptop: change from RED to YELLOW
-		g.setColor(Color.YELLOW);
+		// tmcadams - home: Changed color from YELLOW to WHITE
+		g.setColor(Color.WHITE);
 
 		Square square = model.getSquare();
 		
